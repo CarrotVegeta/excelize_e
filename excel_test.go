@@ -1,6 +1,9 @@
 package excel
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestExcel(t *testing.T) {
 	f := NewFile("sheet1")
@@ -19,4 +22,11 @@ func TestExcel(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
+}
+func TestConvertNumToChar(t *testing.T) {
+	fmt.Println(ConvertNumToChars(10))
+	fmt.Println(ConvertNumToChars(20))
+	fmt.Println(ConvertNumToChars(26))
+	fmt.Println(ConvertNumToChars(27))
+	fmt.Println(ConvertNumToChars(53))
 }
