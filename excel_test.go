@@ -6,7 +6,12 @@ import (
 )
 
 func TestExcel(t *testing.T) {
-	f := NewFile("sheet1")
+	f := NewFile()
+	_, err2 := f.NewSheet("sheet1")
+	if err2 != nil {
+		t.Fatalf(err2.Error())
+		return
+	}
 	c := f.NewCell(1)
 	if err := c("host", "api", "源IP"); err != nil {
 		t.Errorf(err.Error())
@@ -17,7 +22,7 @@ func TestExcel(t *testing.T) {
 		return
 	}
 
-	err := f.SaveAs("./123.xlsx")
+	err := f.excelFile.SaveAs("./123.xlsx")
 	if err != nil {
 		t.Errorf(err.Error())
 		return

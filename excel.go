@@ -18,6 +18,7 @@ func NewFile() *FileExcel {
 	}
 }
 func (f *FileExcel) NewSheet(name string) (int, error) {
+	f.SheetName = name
 	return f.excelFile.NewSheet(name)
 }
 func (f *FileExcel) NewCell(row int) func(values ...string) error {
